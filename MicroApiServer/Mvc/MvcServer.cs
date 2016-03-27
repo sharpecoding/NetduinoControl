@@ -17,7 +17,7 @@ namespace MicroApiServer.Mvc
 
         private readonly HttpServer _server;
 
-        private static readonly ApiResponse NotFoundResponse = new ApiResponse("<h1>Page Not Found</h1>") { Status = HttpStatusCode.NotFound };
+        private static readonly ApiResponse NotFoundResponse = new ApiResponse("<h1>Api Not Found</h1>") { Status = HttpStatusCode.NotFound };
         private static readonly ApiResponse ExceptionResponse = new ApiResponse("<h1>Exception occured processing request</h1>") { Status = HttpStatusCode.OK };
 
         private readonly bool _helpEnabled;
