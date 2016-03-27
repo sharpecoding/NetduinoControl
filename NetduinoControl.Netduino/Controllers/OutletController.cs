@@ -15,7 +15,6 @@ namespace NetduinoControl.Netduino.Controllers
         public OutletController() : base("Outlets")
         {
             _states = new bool[OutletCount];
-            _states[1] = true;
         }
 
         public ApiResponse GetState(int index)
@@ -32,7 +31,8 @@ namespace NetduinoControl.Netduino.Controllers
                 return Json(OutOfRangeResult);
 
             _states[index] = value;
-            //Send to relay
+            
+            //TODO: Send to relay
 
             return Json(new OutletApiResult { State = _states[index], Success = true });
         }
