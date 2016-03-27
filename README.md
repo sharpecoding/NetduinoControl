@@ -9,14 +9,25 @@ I am in the process of updating this documentation
 ## MicroApiServer
 "MVC" like implementation of a light-weight API server. Utilizes HTTP
 
-Currently there isn't any flexibility in the routing tables. Urls are routed in the format of:
-http://<ip>/{controller}/{action}/{arg0}/{arg1}/...
+### Routing Table
+Currently there isn't any flexibility in the routing tables:
 
-When http://<ip>/ is hit without {controller} or {action}, "Api Not Found" is returned. Unless HelpEnabled == true, then the HelpController will list all the currently registered controllers and methods.
-When http://<ip>/{controller}/ is hit without {action}, requests will be sent to the action "Default"
+| Url | Invoked Action |
+|---|---|
+|<ip>/|Api Not Found (unless HelpEnabled is true, see below)|
+|<ip>/{controller}| Controller::Default|
+|<ip>/{controller}/{action}| Controller::Action|
+|<ip>/{controller}/{action}/{arg0}| Controller::Action(Arg0)|
+|<ip>/{controller}/{action}/{arg0}/{arg1}/..| Controller::Action(Arg0, Arg1, ...)|
 
+### Arguments
 Arguments are seperated by "/" in the url, and will be bound in the order they appear in the url. Booleans, Integers and Strings are supported. Example:
-http://<ip>/Outlet/SetState/1/true will be routed to OutletController::SetState(1, true), where 1 and true are integers and booleans respectively.
+http://<ip>/Outlet/SetState/1/true will be routed to OutletController::SetState(1, true), where 1 and true are integers and booleans respectively
+
+Named parameters (/{controller}/{action}?{name}={value}) is left to do.
+
+### HelpEnabled
+When HelpEnabled is true, urls routed to <ip>/ do not return Api Not Found, but instead show a list of all the controllers/actions registered with the server.
 
 ## NetduinoControl.Api
 Defines common classes to be used by NetduinoControl.Netduino and NetduinoControl.Phone.
@@ -46,9 +57,14 @@ public class SampleController : Controller
 	
     }
 
+    public ApiResponse Default()
+    {
+        return Ok("Welcome");
+    }
+
     public ApiResponse DoSomething(int count, bool flag, string name)
     {
-        return Json("Welcome");
+        return Json(new SampleApiResult { Status = true, Message = "Executed successfully"});
     }
 }
 ```
