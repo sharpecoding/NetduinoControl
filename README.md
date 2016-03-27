@@ -39,7 +39,7 @@ Netduino application showcasing creating a controller and starting the MicroApiS
 ## NetduinoControl.Phone
 Windows Phone application showing how to consume the Api Server
 
-## Examples
+## Example
 
 ### Creating the server:
 ```C#
@@ -68,3 +68,7 @@ public class SampleController : Controller
     }
 }
 ```
+
+### Over HTTP
+GET /Sample/ - "Welcome"
+GET /Sample/DoSomething/1/true/foo - {Status: true, Message: "Executed successfully"}
