@@ -1,0 +1,6 @@
+﻿<models:OutletCollection
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:models="using:NetduinoControl.Phone.Models">
+    <models:Outlet Name="Fan" State="False" />
+    <models:Outlet Name="Light" State="True" />
+</models:OutletCollection>

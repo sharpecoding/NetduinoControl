@@ -1,0 +1,6 @@
+﻿<phone:Settings
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:phone="using:NetduinoControl.Phone"
+    IPAddress="192.168.0.116">
+    
+</phone:Settings>
