@@ -38,6 +38,7 @@ server.Start();
 ```
 
 ### Creating a Controller
+```C#
 public class SampleController : Controller
 {
     public SampleController() : base("Sample")
@@ -50,3 +51,4 @@ public class SampleController : Controller
         return Json("Welcome");
     }
 }
+```
