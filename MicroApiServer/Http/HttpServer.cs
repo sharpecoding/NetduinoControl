@@ -42,7 +42,6 @@ namespace MicroApiServer.Http
             if (request == null)
                 return;
 
-            Debug.Print("Http Request: " + request.Url);
             HttpResponse response = OnHttpRequest(this, request);
             PostProcess(response);
             client.WriteResponse(response);
@@ -52,6 +51,7 @@ namespace MicroApiServer.Http
         {
             response.Headers.Server = _serverName;
             response.Headers.Connection = "close";
+            response.Headers.CacheControl = "no-cache";
         }
 
         public void Start()

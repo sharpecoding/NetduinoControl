@@ -13,6 +13,7 @@ namespace MicroApiServer.Http
         private const string ConnectionString = "Connection";
         private const string DateString = "Date";
         private const string ServerString = "Server";
+        private const string CacheControlString = "Cache-Control";
         
         public string UserAgent
         {
@@ -60,6 +61,12 @@ namespace MicroApiServer.Http
         {
             get { return this.GetString(ServerString); }
             set { this.Set(ServerString, value); }
+        }
+
+        public string CacheControl
+        {
+            get { return this.GetString(CacheControlString); }
+            set { this.Set(CacheControlString, value); }
         }
 
         public HttpHeaderCollection() : base()

@@ -65,7 +65,6 @@ namespace MicroApiServer.Mvc
         public ApiResponse Dispatch(string url)
         {
             MvcRequest request = ParseRequest(url);
-            Debug.Print("MVC " + request.Controller.Name + " - " + request.Action.Name);
 
             if ((request.Controller == null) || (request.Action == null))
                 return NotFoundResponse;

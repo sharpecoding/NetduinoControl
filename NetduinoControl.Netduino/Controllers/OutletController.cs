@@ -1,7 +1,10 @@
 using System;
 using MicroApiServer.Framework;
 using Microsoft.SPOT;
+using Microsoft.SPOT.Hardware;
 using NetduinoControl.Api;
+using NetduinoControl.Netduino.Drivers;
+using SecretLabs.NETMF.Hardware.Netduino;
 
 namespace NetduinoControl.Netduino.Controllers
 {
@@ -10,11 +13,20 @@ namespace NetduinoControl.Netduino.Controllers
         private readonly ApiResult OutOfRangeResult = new ApiResult {Error = "Index out of range"};
 
         private const int OutletCount = 4;
+
         private readonly bool[] _states;
+        private readonly InvertedOutputPort[] _outputs;
+
+        private readonly Cpu.Pin[] _pins = { Pins.GPIO_PIN_D0, Pins.GPIO_PIN_D1, Pins.GPIO_PIN_D2, Pins.GPIO_PIN_D3 };
 
         public OutletController() : base("Outlets")
         {
             _states = new bool[OutletCount];
+            _outputs = new InvertedOutputPort[OutletCount];
+            for (int i = 0; i < OutletCount; i++)
+            {
+                _outputs[i] = new InvertedOutputPort(_pins[i], true);
+            }
         }
 
         public ApiResponse GetState(int index)
@@ -31,8 +43,7 @@ namespace NetduinoControl.Netduino.Controllers
                 return Json(OutOfRangeResult);
 
             _states[index] = value;
-            
-            //TODO: Send to relay
+            _outputs[index].Write(_states[index]);
 
             return Json(new OutletApiResult { State = _states[index], Success = true });
         }

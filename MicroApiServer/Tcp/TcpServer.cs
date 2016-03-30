@@ -50,7 +50,6 @@ namespace MicroApiServer.Tcp
                     {
                         using (clientSocket)
                         {
-                            Debug.Print("Socked connected");
                             OnRequest(this, clientSocket);
                         }
                     });
