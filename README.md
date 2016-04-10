@@ -71,4 +71,5 @@ public class SampleController : Controller
 
 ### Over HTTP
 GET /Sample/ - "Welcome"
+
 GET /Sample/DoSomething/1/true/foo - {Status: true, Message: "Executed successfully"}
