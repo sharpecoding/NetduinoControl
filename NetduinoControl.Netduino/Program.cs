@@ -38,6 +38,7 @@ namespace NetduinoControl.Netduino
 
             MvcServer server = new MvcServer(helpEnabled:true);
             server.RegisterController(new OutletController());
+            server.RegisterController(new TempController());
 
             //Wait for networks
             NetworkAvailableEvent.WaitOne();

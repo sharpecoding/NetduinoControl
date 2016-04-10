@@ -114,7 +114,8 @@ namespace MicroApiServer.Mvc
             if (controller != null)
             {
                 request.Controller = GetController(controller);
-                request.Action = GetAction(request.Controller, action ?? DefaultAction);
+                if (request.Controller != null)
+                    request.Action = GetAction(request.Controller, action ?? DefaultAction);
             }
             
             return request;
