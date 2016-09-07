@@ -34,6 +34,7 @@
   <ItemGroup>
     <Compile Include="Controllers\OutletController.cs" />
     <Compile Include="Controllers\TempController.cs" />
+    <Compile Include="DebuggerBrowsableState.cs" />
     <Compile Include="Drivers\DS18B20.cs" />
     <Compile Include="Drivers\InvertedOutputPort.cs" />
     <Compile Include="Drivers\TemperatureFormat.cs" />

@@ -30,6 +30,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="ApiResult.cs" />
+    <Compile Include="DebuggerBrowsableState.cs" />
     <Compile Include="OutletApiResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TempApiResult.cs" />
