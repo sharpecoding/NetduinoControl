@@ -121,7 +121,8 @@ namespace MicroApiServer.Mvc
             return request;
         }
 
-        //Super basic parsing function, does bools, ints, and strings.
+        //Super basic parsing function, does bools, ints, doubles, and strings.
+        //Should use the parameter type to invoke appropriate parsing
         private object ParseArgument(string arg)
         {
             if (arg.ToLower() == bool.TrueString.ToLower())
@@ -135,8 +136,19 @@ namespace MicroApiServer.Mvc
             }
             catch (Exception)
             {
-                return arg;
+                
             }
+
+            try
+            {
+                return double.Parse(arg);
+            }
+            catch (Exception)
+            {
+
+            }
+
+            return arg;
         }
 
         private Controller GetController(string controller)
